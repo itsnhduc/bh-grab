@@ -1,6 +1,18 @@
-<h1>bh-grab</h1>
-<form onsubmit="onsubmit()">
-  Enter link:
-  <input type="text" name="link" id="link" placeholder="Paste link here..." />
-</form>
-{{#if downloadLink}}<p>Link: <a href="{{downloadLink}}" download="{{downloadName}}">Download</a></p>{{/if}}
+<div class="container bg-dark">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>bh-grab</h1>
+      <form onsubmit="onsubmit()">
+        <div class="form-group">
+          <label for="link">Link</label>
+          <input class="form-control" type="text" name="link" id="link" placeholder="Paste link here..." />
+        </div>
+        <div class="form-group">
+          {{#if downloadLink}}
+          <a href="{{downloadLink}}" download="{{downloadName}}"><button class="form-control btn btn-primary" type="button">Download</button></a>
+          {{/if}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
