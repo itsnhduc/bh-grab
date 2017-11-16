@@ -8,9 +8,10 @@ function getDownloadLink (link, res) {
     fetch(link).then(function (linkRes) {
       return linkRes.text()
     }).then(function (htmlText) {
-      dlLink = htmlText.match(/http.*get_file.*.mp4/)[0]
-      resolveRedirect(dlLink).then(finalDlLink => {
-        res.render('index', { downloadLink: finalDlLink })
+      var downloadLink = htmlText.match(/http.*get_file.*.mp4/)[0]
+      var downloadName = htmlText.match(/(h2).*(h2)/)[0].slice(3, -4)
+      resolveRedirect(downloadLink).then(finalDlLink => {
+        res.render('index', { downloadLink: finalDlLink, downloadName: downloadName })
       })
     })
   } else {
