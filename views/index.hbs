@@ -1,18 +1,61 @@
 <div class="container bg-dark">
   <div class="row">
     <div class="col-md-12">
-      <h1>bh-grab</h1>
-      <form onsubmit="onsubmit()">
-        <div class="form-group">
-          <label for="link">Link</label>
-          <input class="form-control" type="text" name="link" id="link" placeholder="Paste link here..." />
+      <h1>PGRAB</h1>
+      <section>
+        <h2>bh</h2>
+        <form>
+          <div class="form-group">
+            <label for="link">Link</label>
+            <input class="form-control" type="text" name="link" id="link" placeholder="Paste link here..." />
+          </div>
+          <div class="form-group">
+            {{#if downloadLink}}
+            <a href="{{downloadLink}}"><button class="form-control btn btn-primary" type="button">{{downloadName}}</button></a>
+            {{/if}}
+          </div>
+        </form>
+      </section>
+      <section>
+        <h2>ph</h2>
+        <div>
+          <form>
+            <div class="form-group">
+              <label for="search">Search</label>
+              <input class="form-control" type="text" name="search" id="search" placeholder="Search..." />
+            </div>
+          </form>
+          <div class="form-group">
+            <div class="row">
+              {{#if listing}}
+              {{#each listing}}
+              {{#if link}}
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                  <div class="form-group text-center">
+                    <a href="{{link}}"><img class="img-thumbnail" src="{{thumb}}" /></a>
+                    <div class="title-wrapper">
+                      <h4><a href="{{link}}">{{titleShort}}</a></h4>
+                    </div>
+                    <div class="row stats">
+                      <div class="col-sm-4">🕒 {{duration}}</div>
+                      <div class="col-sm-4">👀 {{views}}</div>
+                      <div class="col-sm-4">👍 {{value}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/if}}
+              {{/each}}
+              {{/if}}
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <a href="#"><button class="btn btn-primary ph-nav" type="button">Previous</button></a>
+            <a href="#"><button class="btn btn-primary ph-nav" type="button">Next</button></a>
+          </div>
         </div>
-        <div class="form-group">
-          {{#if downloadLink}}
-          <a href="{{downloadLink}}" download="{{downloadName}}"><button class="form-control btn btn-primary" type="button">Download</button></a>
-          {{/if}}
-        </div>
-      </form>
+      </section>
     </div>
   </div>
 </div>
