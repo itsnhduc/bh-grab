@@ -33,8 +33,9 @@ function getDownloadLink (link, res) {
   fetch(link)
     .then(function (linkRes) { return linkRes.text() })
     .then(function (htmlText) {
-      var downloadLink = htmlText.match(/http.*get_file.*.mp4/)[0]
+      var downloadLink = htmlText.match(/http.*?get_file.*?.mp4/)[0]
       var downloadName = htmlText.match(/(h2).*(h2)/)[0].slice(3, -4)
+      console.log(downloadLink)
       resolveRedirect(downloadLink)
         .then(function (finalDlLink) {
           res.render('index', genInfo({
